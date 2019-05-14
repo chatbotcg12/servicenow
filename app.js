@@ -62,7 +62,7 @@ app.post('/service', function (req, response) {
             });
             break;
 			/**Create new ticket in service now */
-        case "createnewticketservicenow":
+        case "postticket":
             var sort_desc = (req.body.queryResult.parameters.sort_description).toString();
             const data = {
                 'short_description': (req.body.queryResult.parameters.sort_description).toString(),
