@@ -61,6 +61,20 @@ app.post('/service', function (req, response) {
                 response.send(JSON.stringify({ "fulfillmentText": "Ticketnumber:  " + res[0].number + " status is " + res[0].incident_state + " and description : " + res[0].short_description }));
             });
             break;
+			/**Create new ticket in service now */
+        case "createnewticketservicenow":
+            var sort_desc = (req.body.queryResult.parameters.sort_description).toString();
+            const data = {
+                'short_description': (req.body.queryResult.parameters.sort_description).toString(),
+                'urgency': (req.body.queryResult.parameters.urgency).toString(),
+                'assignment_group': 'Hardware'
+            };
+            ServiceNow.createNewTask(data, 'incident', res => {
+                console.log(JSON.stringify({ "fulfillmentText": "Your ticket " + res.number + " is created successfully with status: " + res.state + " and description: " + res.short_description }));
+                response.send(JSON.stringify({ "fulfillmentText": "Your ticket " + res.number + " is created successfully with status: " + res.state + " and description: " + res.short_description }));
+            });
+
+            break;
 			/**Getting ticket urgency from service now */
 			 case "geturgencyofticket":
 				response.setHeader('Content-Type', 'application/json');
