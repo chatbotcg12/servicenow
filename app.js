@@ -40,8 +40,8 @@ const ServiceNow = new sn('dev49606', 'admin', '10Service@321');
 ///////////////////////////////////////////
 app.post('/service', function (req, response) {
 		console.log("Display name ", req.body.queryResult.intent.displayName);
-        switch (req.body.queryResult.intent.displayName) {			
-           
+		console.log("Display name ", req.body.queryResult);
+        switch (req.body.queryResult.intent.displayName) {			          
 		/**Getting ticket details from service now */
         case "getServiceNowTkt":
             response.setHeader('Content-Type', 'application/json');
