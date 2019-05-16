@@ -39,8 +39,8 @@ const ServiceNow = new sn('dev49606', 'admin', '10Service@321');
 //     API for connection servicenow  //
 ///////////////////////////////////////////
 app.post('/service', function (req, response) {
-		console.log("Display name ", req.body.queryResult.intent.displayName);
-		console.log("Display name ", req.body.queryResult);
+		
+		console.log("Query result for service now.....", req.body.queryResult);
         switch (req.body.queryResult.intent.displayName) {			          
 		/**Getting ticket details from service now */
         case "getServiceNowTkt":
